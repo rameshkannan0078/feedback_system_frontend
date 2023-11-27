@@ -2,9 +2,7 @@ import { GLOBAL } from "../Common/Lang/lang";
 
 
 
-const API_BASE_URL = process.env.REACT_APP_API_URL;
 
-const ACCESS_TOKEN=localStorage.getItem(GLOBAL.TOKEN);
 
 
 const handleResponse = async (response) => {
@@ -17,6 +15,11 @@ const handleResponse = async (response) => {
 };
 
 export const backendPost = async (endpoint, data) => {
+
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
+const ACCESS_TOKEN=localStorage.getItem(GLOBAL.TOKEN);
+
   try {
     const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
       method: 'POST',
@@ -35,6 +38,11 @@ export const backendPost = async (endpoint, data) => {
 
 export const backendGet = async (endpoint) => {
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
+const ACCESS_TOKEN=localStorage.getItem(GLOBAL.TOKEN);
+
+
   try {
     const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
       method: 'GET',
@@ -51,6 +59,10 @@ export const backendGet = async (endpoint) => {
 };
 
 export const backendPatch = async (endpoint, data) => {
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
+const ACCESS_TOKEN=localStorage.getItem(GLOBAL.TOKEN);
+
   try {
     const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
       method: 'PATCH',
@@ -68,6 +80,10 @@ export const backendPatch = async (endpoint, data) => {
 };
 
 export const backendDelete = async (endpoint) => {
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
+const ACCESS_TOKEN=localStorage.getItem(GLOBAL.TOKEN);
+
   try {
     const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
       method: 'DELETE',

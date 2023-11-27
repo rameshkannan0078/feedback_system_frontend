@@ -7,6 +7,7 @@ import useSingleUserFeedback from "../../../hooks/useSingleUserFeedback";
 
 
 const PreviousFeedback = () => {
+  
  const {loading,feedbackList,refetchFeedback}=useSingleUserFeedback();
 
   return (
@@ -16,8 +17,8 @@ const PreviousFeedback = () => {
           <BaCircularProgressIndicator />
         ) : (
           <div className="flex flex-wrap w-full">
-            {feedbackList.length!==0 ? (
-              feedbackList.map((feedback) => (
+            {feedbackList?.length!==0 ? (
+              feedbackList?.map((feedback) => (
                 <FeedbackCard key={feedback._id} feedback={feedback} callFeedbackData={refetchFeedback} />
               ))
             ) : (

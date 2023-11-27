@@ -7,13 +7,14 @@ import { ArrowRight } from 'react-feather';
 const WelcomeComponent = () => {
   const navigate = useNavigate();
 
+
+
   const handlePage = (path) => {
     navigate(path);
   };
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center w-full h-screen p-8">
-  
       <div className="md:flex-shrink-0 md:w-1/2 mb-4 md:mb-0">
         <div className="rounded-lg overflow-hidden shadow-lg bg-white">
           <img src={welcomeImage} className="w-full h-full object-cover" alt="Welcome" />

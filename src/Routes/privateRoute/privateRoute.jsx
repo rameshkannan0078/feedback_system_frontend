@@ -23,7 +23,7 @@ export function AdminPrivateRoute({ children }) {
     const { token, result } = useLoginDetailsSelector()?.loginDetails || {};
 
     if (!token || (result && result.type !== 'ADMIN') || isTokenExpired(token)) {
-        if (localToken && localItem && !isTokenExpired(localToken)) {
+        if (localToken && (localItem?.type==='ADMIN') && !isTokenExpired(localToken)) {
             return children;
         }
         return <Navigate to="/" />;
@@ -49,3 +49,5 @@ function isTokenExpired(token) {
         return true;
     }
 }
+
+

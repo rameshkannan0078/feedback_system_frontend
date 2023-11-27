@@ -7,6 +7,7 @@ import {
   LogOut,
   Grid,
   Users,
+  UserPlus,
 } from "react-feather";
 import { GLOBAL } from "../../Services/Common/Lang/lang";
 
@@ -37,6 +38,12 @@ const AdminOptions = [
     value: "CUSTOMER_FEEDBACK",
     path: "/adminhome",
     icon: <Users size={20} />,
+  },
+  {
+    label: "Customer List",
+    value: "CUSTOMER_LIST",
+    path: "/adminuser",
+    icon: <UserPlus size={20} />,
   },
 ];
 

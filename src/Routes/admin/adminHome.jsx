@@ -51,7 +51,7 @@
       setPage(0);
     };
 
-    const slicedFeedbackList = feedbackList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+    const slicedFeedbackList = feedbackList?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
     const handleDelete = async (feedback) => {
       const data = await backendDelete(`${ENDPOINTS.FEEDBACK.delete}/${feedback._id}`);
@@ -73,7 +73,7 @@
         <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={feedbackList.length}
+            count={feedbackList?.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
