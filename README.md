@@ -1,9 +1,31 @@
-# Getting Started with Create React App
+# Feedback System Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Demo : https://drive.google.com/file/d/1jdtyD1Z7yGSd6v4wMVRXbf9Cs-_WHWo4/view?usp=sharing
 
+## Installation
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rameshkannan0078/feedback_system_backend.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd feedback_system_frontend
+   ```
+
+3. Install the packages:
+   ```bash
+   npm install
+   ```
+
+4. Start the server:
+   ```bash
+   npm start
+   ```
+   The server will be running at [http://localhost:7000](http://localhost:7000) by default.
+   
 ## Available Scripts
 
 In the project directory, you can run:
