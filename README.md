@@ -7,7 +7,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/rameshkannan0078/feedback_system_backend.git](https://github.com/rameshkannan0078/feedback_system_frontend.git)
+   git clone https://github.com/rameshkannan0078/feedback_system_frontend.git
    ```
 
 2. Navigate to the project directory:
