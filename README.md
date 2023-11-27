@@ -24,7 +24,7 @@
    ```bash
    npm start
    ```
-   The server will be running at [http://localhost:7000](http://localhost:7000) by default.
+   The server will be running at [http://localhost:3000](http://localhost:3000) by default.
    
 ## Available Scripts
 
