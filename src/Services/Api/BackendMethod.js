@@ -6,6 +6,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const ACCESS_TOKEN=localStorage.getItem(GLOBAL.TOKEN);
 
+
 const handleResponse = async (response) => {
   if (!response.ok) {
     const error = await response.json();

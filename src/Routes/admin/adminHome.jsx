@@ -5,18 +5,46 @@
   import { Edit,Trash2 } from 'react-feather';
   import { TablePagination } from '@material-ui/core';
   import ENDPOINTS from '../../Services/Api/Endpoints';
-  import { backendDelete } from '../../Services/Api/BackendMethod';
+  import { backendDelete, backendPatch } from '../../Services/Api/BackendMethod';
   import { toast } from 'react-toastify';
-
-
+  import EditFeedbackModal from '../../Components/FeedbackModalCard/FeedbackModalCard';
+  
   const AdminHomepage = () => {
     const { loading, feedbackList,fetchFeedbackList } = useAllUserFeedback();
+    const [singleFeedback,setSingleFeedback]=useState({});
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
     const handleChangePage = (_, newPage) => {
       setPage(newPage);
     };
+
+
+    const [isEditModalOpen, setEditModalOpen] = useState(false);
+
+    const handleEditClick = (feedback) => {
+      setSingleFeedback(feedback);
+      setEditModalOpen(true);
+    };
+
+
+  
+    const handleEditClose = () => {
+      setEditModalOpen(false);
+    };
+  
+    const handleEditSave = async (editedFeedback) => {
+      const data=await backendPatch(ENDPOINTS.FEEDBACK.update,editedFeedback)
+      if(data.status){
+        toast.success('Feedback has been updated successfully !');
+        fetchFeedbackList();
+      }
+      else{
+        toast.error(data.message);
+      }
+    };
+
+    
 
     const handleChangeRowsPerPage = (event) => {
       setRowsPerPage(parseInt(event.target.value, 10));
@@ -35,6 +63,8 @@
         toast.error('Unable to delete the feedback');
       }
     };
+
+
 
 
     return (
@@ -69,19 +99,19 @@
                   </td>
                 </tr>
               ) : (
-                slicedFeedbackList.map((feedback) => (
-                  <tr key={feedback._id}>
-                    <td className="border border-gray-300 p-4">{feedback.customerName}</td>
-                    <td className="border border-gray-300 p-4">{feedback.feedbackType}</td>
-                    <td className="border border-gray-300 p-4">{feedback.feedbackSubject}</td>
-                    <td className="border border-gray-300 p-4">{feedback.feedback}</td>
-                    <td className="border border-gray-300 p-4">{feedback.rating}</td>
-                    <td className="border border-gray-300 p-4">{new Date(feedback.date).toLocaleString()}</td>
+                slicedFeedbackList?.map((feedback) => (
+                  <tr key={feedback?._id}>
+                    <td className="border border-gray-300 p-4">{feedback?.customerName}</td>
+                    <td className="border border-gray-300 p-4">{feedback?.feedbackType}</td>
+                    <td className="border border-gray-300 p-4">{feedback?.feedbackSubject}</td>
+                    <td className="border border-gray-300 p-4">{feedback?.feedback}</td>
+                    <td className="border border-gray-300 p-4">{feedback?.rating}</td>
+                    <td className="border border-gray-300 p-4">{new Date(feedback?.date).toLocaleString()}</td>
                     <td className='border border-gray-300 p-4'>
                     <div className="ml-4 flex flex-row space-x-3 items-center ">
             <div
               className="cursor-pointer text-blue-500 flex items-center bg-blue-100 rounded p-2"
-          
+              onClick={()=>{handleEditClick(feedback)}}
             >
               <Edit size={20} />
               <span className="ml-1">Edit</span>
@@ -98,6 +128,13 @@
             </tbody>
           </table>
         </div>
+
+        <EditFeedbackModal
+        isOpen={isEditModalOpen}
+        onClose={handleEditClose}
+        feedback={singleFeedback}
+        onEdit={handleEditSave}
+      />
       </Layout>
     );
   };

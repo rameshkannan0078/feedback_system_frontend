@@ -47,6 +47,7 @@ const Sidebar = ({ onClose }) => {
 
   const handleLogout = () => {
     localStorage.removeItem(GLOBAL.TOKEN);
+    localStorage.removeItem(GLOBAL.USER_CREDENTIALS);
     navigate("/");
   };
 

@@ -27,9 +27,7 @@ const AdminLogin = () => {
     });
   };
 
-  const handlePage = (path) => {
-    navigate(path);
-  };
+
 
 
   const handleLogin=async ()=>{

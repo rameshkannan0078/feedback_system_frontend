@@ -5,7 +5,7 @@
   import { GLOBAL } from "../../Services/Common/Lang/lang";
   import { validateForm } from "../../Services/Validator/validator";
   import { useDispatch } from "react-redux";
-  import {  USER_DISPATCH, setUserDetails } from "../../Redux/Actions/userAction";
+  import {  USER_DISPATCH } from "../../Redux/Actions/userAction";
 
   const Signin = () => {
 

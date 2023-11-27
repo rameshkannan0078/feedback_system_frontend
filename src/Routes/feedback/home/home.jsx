@@ -8,13 +8,10 @@ import { GLOBAL } from '../../../Services/Common/Lang/lang';
 import { toast } from 'react-toastify';
 import { feedbackTypeOptions  } from '../../../Services/Common/OptionTypes/types';
 import { validateForm } from "../../../Services/Validator/validator";
-import { useLoginDetailsSelector } from '../../../Redux/useSelector/useUser';
-
 
 
 const HomePage = () => {
   
-  const data=useLoginDetailsSelector();
   const [errorMsg,setErrorMsg]=useState('');
   const [formData, setFormData] = useState({
     feedbackType: '',

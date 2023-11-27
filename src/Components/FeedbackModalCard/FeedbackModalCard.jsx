@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Modal, Backdrop, Fade, Button } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { Modal, Backdrop, Fade } from "@material-ui/core";
 import { BaLabel } from "../BaLabel/BaLabel";
 import { BaInputField } from "../BaInputField/BaInputField";
 import { Star, X } from "react-feather";
@@ -8,7 +8,12 @@ import BaSelect from "../BaSelect/BaSelect";
 
 
 const EditFeedbackModal = ({ isOpen, onClose, feedback, onEdit }) => {
-  const [editedFeedback, setEditedFeedback] = useState({ ...feedback });
+
+  const [editedFeedback, setEditedFeedback] = useState({});
+
+  useEffect(()=>{
+    setEditedFeedback(feedback);
+  },[feedback])
 
   const handleChange = (field, value) => {
     setEditedFeedback({ ...editedFeedback, [field]: value });
